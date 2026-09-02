@@ -1,0 +1,37 @@
+{
+
+    "action_login" : "Login",
+    "action_create_account" : "Create your account",
+
+    "welcome" : "Welcom ! please enter your details",
+    "login" : "Login",
+    "email" : "Email",
+    "password" : "Password",
+    "firstname": "Username",
+    "lastname": "Lastname",
+    "phone": "Phone",
+    "update": "Update",
+    "add_user": "Add user",
+    "avatar_url": "Avatar",
+
+    "success_message_login": "Login successful",
+    "error_message_login": "Incorrect email or password!",
+    "account_created_message": "Votre compte a été créé avec succès. Veuillez attendre sa validation.",
+
+    "remember_me": "Remember me",
+    "dont_have_account": "Don't have an account?",
+    "register": "Register",
+    "back_to_login": "Back to ",
+    "sign_in": "Sign In",
+    "forgot_password": "Forgot password?",
+
+
+    "dashboard": "Dashboard",
+    "tour": "Delivery Route",
+    "users": "Users",
+    "role": "Role",
+    "permission": "Permission",
+    "delivery": "Delivery",
+
+    "search" : "Search"
+}

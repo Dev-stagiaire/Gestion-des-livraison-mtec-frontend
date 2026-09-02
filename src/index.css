@@ -1,0 +1,79 @@
+@import "tailwindcss";
+
+/* :root{ 
+    --primary-color: #53cef7;
+    --secondary-color: #535354;
+    --background-color: #fcfcfc;
+    --pink: #d31081;
+    --grey: #5b5859;
+    
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --white-color: #FFF;
+    --black-color: #000;
+    --input-border-color: #E3E4E6;
+    --transition-3s: 0.3s;
+} */
+@font-face {
+    font-family: "Hanken Grotesk Thin";
+    src: url("/fonts/HankenGrotesk-Thin.ttf") format("truetype");
+    font-weight: 100;
+    font-style: normal;
+}
+@font-face {
+    font-family: "Hanken Grotesk Regular";
+    src: url("/fonts/HankenGrotesk-Regular.ttf") format("truetype");
+}
+@font-face {
+    font-family: "Hanken Grotesk SemiBold";
+    src: url("/fonts/HankenGrotesk-SemiBold.ttf") format("truetype");
+    font-weight: 100;
+    font-style: normal;
+}
+@font-face {
+    font-family: "Hanken Grotesk Medium";
+    src: url("/fonts/HankenGrotesk-Medium.ttf") format("truetype");
+    font-weight: 100;
+    font-style: normal;
+}
+
+
+:root {
+    --background-color: #1f2e54;
+    --color-primary: #1f2e54;
+    --color-secondary: #6a275c;
+    --color-accent: #3e3317;
+    --color-highlight: #276a36;
+    --color-surface: #f3f4f7;
+    --color-ink: #181c25;
+}
+.bg-light{
+    background-color: var(--color-surface);
+}
+.bg-dark{
+    background-color: var(--color-ink);
+}
+.color-accent{
+    color: red;
+}
+.text-primary{
+    color: #0D1936;
+}
+.text-secondary{
+
+}
+.btn-primary{
+
+}
+.btn-secondary{
+
+}
+
+.item{
+    color: #f4f4f4;
+    font-family: "Hanken Grotesk Regular", sans-serif;
+}
+.active{
+    color: var(--color-surface);
+    @apply border-r-4 border-solid border-r-red-400 bg-gradient-to-l from-red-500/10 to-transparent
+}
+ 
