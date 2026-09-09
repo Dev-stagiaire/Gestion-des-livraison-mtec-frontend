@@ -1,6 +1,6 @@
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
 import { ChevronDownIcon } from '@heroicons/react/20/solid'
-import { Children, useState, type ReactNode } from 'react';
+import { useState, type ReactNode } from 'react';
 import { Link } from 'react-router';
 
 
@@ -25,16 +25,15 @@ export default function Dropdown({title, value, options, className}: DropdownPro
 
     const [selected, setSelected] = useState(null);
     const [icon, setIcon] = useState<ReactNode | undefined>(undefined);
-    console.dir("selected: "+ selected);
 
   return (
-    <Menu as="div" className="relative inline-block " >
+    <Menu as="div" className="relative inline-block w-full" >
         <input
             type="hidden"
             name={title}
             value={selected ?? value}
         />
-      <MenuButton className="inline-flex w-full justify-center gap-x-1.5 bg-white px-3 py-2 text-sm text-gray-900 hover:bg-gray-50 outline-none
+      <MenuButton className="inline-flex justify-center gap-x-1.5 bg-white px-3 py-2 text-sm text-gray-900 hover:bg-gray-50 outline-none
         focus:outline-none
         focus:ring-0
         focus:border-0"
@@ -76,7 +75,7 @@ export default function Dropdown({title, value, options, className}: DropdownPro
                         <MenuItem>
                             <Link
                                 to={option.link}
-                                className="block w-full px-4 py-2 text-left text-sm text-gray-700 data-focus:bg-gray-100 data-focus:text-gray-900 data-focus:outline-hidden"
+                                className="block px-4 py-2 text-left text-sm text-gray-700 data-focus:bg-gray-100 data-focus:text-gray-900 data-focus:outline-hidden"
                                 onClick={() => {setSelected(option.title)}}
                             >
                                 {option.title}

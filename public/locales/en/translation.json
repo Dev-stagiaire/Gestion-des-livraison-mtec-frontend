@@ -33,5 +33,15 @@
     "permission": "Permission",
     "delivery": "Delivery",
 
-    "search" : "Search"
+    "search" : "Search",
+    "add": "Add",
+    "add_permission": "Add permission",
+    "add_role": "Add role",
+    "edit_user": "Edit user",
+    "name": "Name",
+    "status": "Status",
+    "active": "Active",
+    "inactive": "Inactive"
+
+
 }

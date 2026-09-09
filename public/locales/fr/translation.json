@@ -10,7 +10,7 @@
     "lastname": "Prénom",
     "phone": "Téléphone",
     "update": "Modifier",
-    "add_user": "Ajouter un Utilisateur",
+    "add_user": "Ajouter un utilisateur",
     "avatar_url": "Avatar",
 
     "success_message_login": "Connexion réussie",
@@ -33,5 +33,13 @@
     "permission": "Permission",
     "delivery": "Livraison",
 
-    "search" : "Recherche"
+    "search" : "Recherche",
+    "add": "Ajouter",
+    "add_permission": "Ajouter une permission",
+    "add_role": "Ajouter un rôle",
+    "edit_user": "Edit user",
+    "name": "Nom",
+    "status": "Etat",
+    "active": "Actif",
+    "inactive": "Inactif"
 }

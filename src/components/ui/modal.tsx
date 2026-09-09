@@ -2,15 +2,16 @@ import type { ReactNode } from "react";
 import CloseIcon from "../../icons/CloseIcon";
 
 interface AddUserModalProps {
+    title: string;
     width: string;
     children: ReactNode;
     onClose: () => void;
 }
 
-const Modal = ({ width, children, onClose }: AddUserModalProps) => {
+const Modal = ({ title, width, children, onClose }: AddUserModalProps) => {
    return (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40">
-            <div className={`relative w-${width} rounded-md bg-white p-6 shadow-lg`}>
+            <div className={`relative rounded-md bg-white p-6 shadow-lg`} style={{ width: `${width}px` }}>
                 
                 <button
                     type="button"
@@ -22,7 +23,7 @@ const Modal = ({ width, children, onClose }: AddUserModalProps) => {
                 </button>
 
                 <h2 className="text-md font-semibold">
-                    Add user
+                    {title}
                 </h2>
 
                 {children}

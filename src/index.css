@@ -76,4 +76,12 @@
     color: var(--color-surface);
     @apply border-r-4 border-solid border-r-red-400 bg-gradient-to-l from-red-500/10 to-transparent
 }
+.app-text{
+    color: var(--black-color);
+    font-family: "Hanken Grotesk Regular", sans-serif;
+    @apply text-sm
+}
+.border-color{
+    @apply border border-[--input-border-color]
+}
  

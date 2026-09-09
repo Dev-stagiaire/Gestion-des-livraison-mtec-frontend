@@ -48,6 +48,13 @@ const Users = () => {
             user.email,
             user.phone,
             user.role.name,
+           <span
+                className={`px-2 py-1 rounded-lg ${
+                    user.is_active ? "bg-green-100 text-green-700" : "bg-red-100 text-red-700"
+                }`}
+            >
+                {user.is_active ? translator("active") : translator("inactive")}
+            </span>,
             <button
                 type="button"
                 onClick={() => {
@@ -61,7 +68,8 @@ const Users = () => {
         ]);
     }, [users]);
 
-    const keys: (keyof User)[] = ["first_name", "email", "phone", "role"];
+    // const keys: (keyof User)[] = ["first_name", "email", "phone", "role", "Status"];
+    const keys: string[] = [translator("firstname"), translator("email"), translator("phone"), translator("role"), translator("status")];
 
     const hasNext = queryData.offset + queryData.limit < count;
     const hasPrev = queryData.offset > 0;
@@ -95,10 +103,15 @@ const Users = () => {
     });
 
     useEffect(() => {
-        console.log("userEdit :", userEdit);
+        
     }, [userEdit]);
 
     const { results: roles } = useFecthData(getRoles, pagination);
+
+    const roleOptions = roles.map((role) => ({
+            label: role.name,
+            value: role.id
+    }));
 
     const handleUserEditSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -129,24 +142,26 @@ const Users = () => {
     const [selectedRole, SetSelectedRole] = useState<Role | undefined>();
 
     const [formData, setFormData] = useState({
-        firstname: firstname,
-        phone: phone,
-        email: email,
         role_id: selectedRole?.id
     });
 
     const handleAddUserSubmit = async () => {
 
         try {
-            await createUser(formData);
-            await refresh();
+            const data = {
+                ...formData,
+                firstname: firstname,
+                phone: phone,
+                email: email,
+            }
+            console.dir(data);
+            // await createUser(formData);
+            // await refresh();
             setAddUserModal(false);
         } catch (error) {
             console.error("Erreur lors de l'enregistrement :", error);
         }
     }
-
-
 
     return (
             
@@ -154,7 +169,7 @@ const Users = () => {
 
 
             {showEditUser && (
-                <Modal width="150" onClose={() => setEditUserModal(false)}>
+                <Modal title={translator("edit_user")} width="750" onClose={() => setEditUserModal(false)}>
                     <form 
                         className="w-full space-y-5"
                         onSubmit={handleUserEditSubmit}
@@ -244,7 +259,7 @@ const Users = () => {
 
 
             {showAddUser && (
-                <Modal width='150' onClose={() => setAddUserModal(false)}>
+                <Modal title={translator("add_user")} width='750' onClose={() => setAddUserModal(false)}>
                     <form
                         className="w-full space-y-5"
                         onSubmit={handleAddUserSubmit}
@@ -279,6 +294,7 @@ const Users = () => {
                             onChange={(e) => setPhone(e.target.value)}
                             required
                         />
+
                        <Dropdown
                             title="Role"
                             options={
@@ -289,7 +305,7 @@ const Users = () => {
                                         {
                                             setFormData((prev) => ({
                                                 ...prev,
-                                                role: role,
+                                                role_id: role.id,
                                             })),
                                             SetSelectedRole(role)
                                         }
@@ -304,7 +320,7 @@ const Users = () => {
                             type="submit"
                             className="flex h-[50px] w-full items-center justify-center gap-3 bg-[#1f2e54] text-sm font-medium text-white transition-all duration-300 hover:gap-4"
                         >
-                            {translator("add_user")}
+                            {translator("add")}
                         </button>
 
                     </form>
@@ -313,9 +329,9 @@ const Users = () => {
             <div className='flex justify-end'>
                 <button
                     onClick={() => setAddUserModal(true)}
-                    className="relative h-10 w-24 px-3 py-1.5 text-sm bg-[#23356A]/90 text-white hover:bg-[#23356A] rounded-sm"
+                    className="relative h-10 w-auto px-3 py-1.5 text-sm bg-[#23356A]/90 text-white hover:bg-[#23356A] rounded-sm"
                 >
-                    Add user
+                    {translator("add_user")}
                 </button>
             </div>
             <Table headers={keys} rows={rows}/>

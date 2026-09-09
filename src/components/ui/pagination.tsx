@@ -1,5 +1,3 @@
-import React from 'react'
-
 interface PaginationProps{
     count: number;
     offset: number;
@@ -13,13 +11,15 @@ interface PaginationProps{
 const Pagination = ({count, offset, limit, hasNext, hasPrev, handlePrev, handleNext}: PaginationProps) => {
   return (
     <nav aria-label="Pagination">
-        <ul className="relative flex justify-center gap-3 text-gray-900 dark:text-white">
+        {/* dark:text-white */}
+        <ul className="relative flex justify-center gap-3 text-gray-900">
             <li>
             <button
                 type='button'
                 onClick={handlePrev}
                 disabled={!hasPrev}
-                className="grid size-8 place-content-center rounded border border-gray-200 transition-colors hover:bg-gray-50 rtl:rotate-180 dark:border-gray-700 dark:hover:bg-gray-800"
+                // dark:border-gray-700 dark:hover:bg-gray-800
+                className="grid size-8 place-content-center rounded border border-gray-200 transition-colors hover:bg-gray-50 rtl:rotate-180"
                 aria-label="Previous page"
             >
                 <svg
@@ -44,7 +44,8 @@ const Pagination = ({count, offset, limit, hasNext, hasPrev, handlePrev, handleN
             <button
                 onClick={handleNext}
                 disabled={!hasNext}
-                className="grid size-8 place-content-center rounded border border-gray-200 transition-colors hover:bg-gray-50 rtl:rotate-180 dark:border-gray-700 dark:hover:bg-gray-800"
+                // dark:border-gray-700 dark:hover:bg-gray-800
+                className="grid size-8 place-content-center rounded border border-gray-200 transition-colors hover:bg-gray-50 rtl:rotate-180 "
                 aria-label="Next page"
             >
                 <svg

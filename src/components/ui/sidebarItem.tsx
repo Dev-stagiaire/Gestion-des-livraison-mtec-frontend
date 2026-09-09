@@ -1,4 +1,4 @@
-import { useContext, useState, type ReactNode } from "react";
+import { useContext, type ReactNode } from "react";
 import { SidebarContext } from "../../context/SidebarContext";
 import { NavLink } from "react-router";
 

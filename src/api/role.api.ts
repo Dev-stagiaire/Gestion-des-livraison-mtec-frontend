@@ -8,6 +8,7 @@ interface CreateRoleData{
 
 interface UpdateRoleData{
     name: string;
+    permission_ids: number[];
 }
 
 export const createRole = (data: CreateRoleData) => {
