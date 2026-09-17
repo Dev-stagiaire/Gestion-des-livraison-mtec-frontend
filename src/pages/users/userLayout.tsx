@@ -25,8 +25,8 @@ const UsersLayout = () => {
   
 
     return (
-        <div className='w-full h-full py-10 px-8 '>
-            <div className='relative flex flex-col gap-5 h-full w-full px-8 pb-5 shadow-sm overflow-auto'>
+        <div className='w-full h-full py-7 px-6 '>
+            <div className='relative flex flex-col gap-5 h-full w-full px-8 py-2 shadow-sm overflow-auto'>
                     <Tabs >
                         {
                             tabsProps.map((props) => {
