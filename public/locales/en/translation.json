@@ -35,13 +35,16 @@
 
     "search" : "Search",
     "add": "Add",
+    "cancel": "Cancel",
     "add_permission": "Add permission",
     "add_role": "Add role",
+    "edit_role": "Edit role",
     "edit_user": "Edit user",
     "name": "Name",
     "status": "Status",
     "active": "Active",
-    "inactive": "Inactive"
+    "inactive": "Inactive",
+    "app_description": "A delivery management solution designed to plan, organize, and track deliveries, routes, and field operations."
 
 
 }

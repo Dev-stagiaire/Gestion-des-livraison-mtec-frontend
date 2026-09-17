@@ -32,7 +32,7 @@ const MultiSelect = ({options, value, onChange, placeholder = "Sélectionner..."
     };
 
     return (
-        <div className="relative w-full app-text">
+        <div className="relative w-full app-text app-input-text-size">
             {/* Input */}
             <div
                 onClick={() => setOpen(!open)}
@@ -75,9 +75,9 @@ const MultiSelect = ({options, value, onChange, placeholder = "Sélectionner..."
 
             {/* Dropdown */}
             {open && (
-                <div className="absolute z-50 mt-1 max-h-60 w-full overflow-auto rounded-md border border-gray-200 bg-white shadow-lg text-xs">
+                <div className="absolute z-50 mt-1 max-h-60 w-full px-1 overflow-auto rounded border border-gray-200 bg-white shadow-lg text-xs">
                     <div className="flex px-3">
-                        <div className='flex gap-1 px-2 h-10 w-60 items-center border-1 border-solid border-gray-200'>
+                        <div className='flex gap-1 px-2 h-10 w-full items-center border-1 border-solid border-gray-200'>
                             <SearchIcon size="18" strokeWidth="1.5"/>
                             <input
                                 type='search'

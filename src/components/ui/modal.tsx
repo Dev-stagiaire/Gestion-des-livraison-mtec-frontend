@@ -4,14 +4,16 @@ import CloseIcon from "../../icons/CloseIcon";
 interface AddUserModalProps {
     title: string;
     width: string;
+    height: string;
     children: ReactNode;
     onClose: () => void;
+    className?: string;
 }
 
-const Modal = ({ title, width, children, onClose }: AddUserModalProps) => {
+const Modal = ({ title, width, height, children, onClose, className }: AddUserModalProps) => {
    return (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40">
-            <div className={`relative rounded-md bg-white p-6 shadow-lg`} style={{ width: `${width}px` }}>
+            <div className={`relative rounded-md bg-white p-6 shadow-lg `} style={{ width: `${width}px`,  height: `${height}`}}>
                 
                 <button
                     type="button"
@@ -22,7 +24,7 @@ const Modal = ({ title, width, children, onClose }: AddUserModalProps) => {
                     <CloseIcon size="16" />
                 </button>
 
-                <h2 className="text-md font-semibold">
+                <h2 className={`text-2xl font-semibold ${className}`}>
                     {title}
                 </h2>
 

@@ -3,7 +3,6 @@
 :root{
     --primary-color: #0D1936;
     --secondary-color: #535354;
-    --background-color: #EFEFEF;
     --shadow-color: rgba(0, 0, 0, 0.1);
     --white-color: #FFF;
     --black-color: #000;
@@ -40,26 +39,28 @@ a:hover{
     background-color: var(--white-color);
 }
 .form-wrapper{
-    /* margin-top: 10%; */
+    margin-top: 10%;
     position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     width: 100%;
     height: 500px;
     background-color: var(--white-color);
-    padding: 1rem 2rem;
+    padding: 2rem 4rem;
     /* background-color: red; */
 }
 /* FORM HEADER STYLE */
 .titles{
     position: relative;
-    align-items: center;
-    text-align: center;
+    align-items: left;
+    text-align: left;
     /* --parent => form-header */
     width: 100%;
-    padding: 1rem 0;
+    padding: 1rem 0.2rem;
     padding-bottom: 0;
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
     /* background-color: coral; */
 }
 .titles p{
@@ -68,14 +69,14 @@ a:hover{
 }
 .title-login{
     position: relative;
-    font-size: 1.5rem;
+    font-size: 2rem;
 }
 .login-form{
-    position: absolute;
+    position: relative;
     left: 50%;
     transform: translate(-50%);
     /* --parent => wrapper  */
-    width: 85%;
+    width: 100%;
     transition: var(--transition-3s);
     /* background-color: aqua; */
 }
@@ -89,7 +90,7 @@ a:hover{
 .input-field{
     width: 100%;
     height: 55px;
-    font-size: 0.8rem;
+    font-size: 1rem;
     background: transparent;
     color: var(--black-color);
     padding: 0 1rem;
@@ -106,15 +107,17 @@ a:hover{
 .input-field:valid ~ .label{
     top: 0;
     left: 5px;
-    font-size: 0.7rem;
+    font-size: 0.8rem;
     background-color: var(--white-color);
     color: var(--primary-color);
-    padding-left: 0.2rem;
+    padding-left: 0.5rem;
     padding-right: 0.8rem;
+
 }
 .input-field:valid ~ .label{
     color: var(--secondary-color);
 }
+
 .label{
     position: absolute;
     top: 50%;
@@ -158,13 +161,13 @@ a:hover{
     gap: 0.8rem;
     width: 100%;
     height: 50px;
-    font-size: 0.8rem;
+    font-size: 1rem;
     font-weight: 500;
     gap: 0.8rem;
     border: none;
     cursor: pointer;
     transition: var(--transition-3s);
-    background-color: #1f2e54;
+    background-color: var(--background-color);
     color: var(--white-color);
 }
 .btn-submit i{
@@ -174,7 +177,7 @@ a:hover{
     gap: 1rem;
 }
 .switch-form{
-    font-size: 0.8rem;
+    font-size: 1rem;
     text-align: center;
 }
 .switch-form a{
@@ -189,9 +192,10 @@ a:hover{
 .logo-wrapper{
     position: relative;
     display: flex;
+    flex-direction: column;
+    gap: 8px;
     justify-content: center;
-    align-items: center;
-    background-color: #1f2e54;
+    background-color: var(--background-color);
 }
 .logo-wrapper .blurry-band{
     position: absolute;
@@ -202,27 +206,20 @@ a:hover{
     background-color: rgba(247, 250, 248,0.3);
     backdrop-filter: blur(5px);
 }
-.logo-wrapper .img-box{
+.img-box{
     position: relative;
-    justify-content: center;
-    align-items: center;
     width: 100%;
-    height: 100%;
-    padding: 4px;
+    height: 10%;
 }
-.logo-wrapper .img-box .img-item{
+.img-item{
     position: relative;
     display: flex;
-    justify-content: center;
-    align-items: center;
     overflow: hidden;
     width: 100%;
     height: 100%;
     border: none;
 }
 .logo-wrapper .img-box .img-item img{
-    max-width: 60%;
-    max-height: 100%;
     position: absolute;
     display: block;
     width: 125%;

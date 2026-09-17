@@ -35,11 +35,14 @@
 
     "search" : "Recherche",
     "add": "Ajouter",
+    "cancel": "Annulé",
     "add_permission": "Ajouter une permission",
     "add_role": "Ajouter un rôle",
-    "edit_user": "Edit user",
+    "edit_role": "Modifier le role",
+    "edit_user": "Modifier l'utilisateur",
     "name": "Nom",
     "status": "Etat",
     "active": "Actif",
-    "inactive": "Inactif"
+    "inactive": "Inactif",
+    "app_description": "Solution de gestion permettant d’organiser, planifier et suivre les livraisons, les tournées et les opérations terrain."
 }

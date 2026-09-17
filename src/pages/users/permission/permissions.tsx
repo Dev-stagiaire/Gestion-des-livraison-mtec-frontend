@@ -16,6 +16,9 @@ type OutletContext = {
 
 const Permissions = () => {
 
+    const modalWidth = "500";
+    const modalHeight = "309";
+
    const {translator} = useI18n();
 
   const { search } = useOutletContext<OutletContext>();
@@ -56,7 +59,7 @@ const Permissions = () => {
   const hasNext = queryData.offset + queryData.limit < count;
   const hasPrev = queryData.offset > 0;
 
-  const keys: (keyof Permission)[] = ["name"];
+  const keys: string[]  = [translator("name")];
   const [refreshKey, setRefreshKey] = useState(0);
 
   const rows = useMemo(() => {
@@ -99,17 +102,34 @@ const Permissions = () => {
       }
   }
 
+    const resetForm = () => {
+        setFormData({
+            name: ""
+        });
+    };
+
+    const handleCancel = () => {
+
+        try {
+            resetForm();
+            setShowAddPermissionModal(false)
+        } catch (error) {
+            console.error(error.message);
+        }
+    }
+
 
   return (
       <div className='relative flex flex-col gap-5 h-full w-full pb-5 overflow-auto'>
                 {showAddPermissionModal && (
                 <Modal
                     title={translator("add_permission")}
-                    width='750'
-                    onClose={() => setShowAddPermissionModal(false)}
+                    onClose={() => handleCancel()}
+                    width={modalWidth} height={modalHeight}
+                    className="px-8"
                 >
                     <form
-                        className="w-full space-y-5"
+                        className="w-full space-y-5 py-6 px-8"
                         onSubmit={handleAddPermissionSubmit}
                     >
 
@@ -125,12 +145,26 @@ const Permissions = () => {
                             required
                         />
                    
-                        <button
-                            type="submit"
-                            className="flex h-[50px] w-full items-center justify-center gap-3 bg-[#1f2e54] text-sm font-medium text-white transition-all duration-300 hover:gap-4"
-                        >
-                            {translator("add")}
-                        </button>
+                         <div className='relative flex justify-end gap-3'>
+
+                             {/* Cancel */}
+                            <button
+                                type="submit"
+                                className="flex h-[40px] w-auto px-8 rounded items-center justify-center gap-3 text-sm font-medium bg-gray-100 text-gray-700 transition-all duration-300 hover:bg-gray-200"
+                                onClick={ () => handleCancel()}
+                            >
+                                {translator("cancel")}
+                            </button>
+
+                             {/* Submit */}
+                            <button
+                                type="submit"
+                                className="flex h-[40px] w-auto px-8 rounded items-center justify-center gap-3 bg-[#1f2e54] text-sm font-medium text-white transition-all duration-300 hover:gap-4"
+                            >
+                                {translator("add")}
+                            </button>
+
+                        </div>
 
                     </form>
                 </Modal>

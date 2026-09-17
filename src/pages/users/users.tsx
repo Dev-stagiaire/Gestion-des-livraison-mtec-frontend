@@ -19,6 +19,9 @@ type OutletContext = {
 
 const Users = () => {
 
+    const modalWidth = "500";
+    const modalHeight = "309";
+
     const {translator} = useI18n();
 
     const { search } = useOutletContext<OutletContext>();
@@ -150,16 +153,36 @@ const Users = () => {
         try {
             const data = {
                 ...formData,
-                firstname: firstname,
+                first_name: firstname,
                 phone: phone,
                 email: email,
             }
             console.dir(data);
-            // await createUser(formData);
+            await createUser(data);
             // await refresh();
             setAddUserModal(false);
         } catch (error) {
             console.error("Erreur lors de l'enregistrement :", error);
+        }
+    }
+
+    const resetForm = () => {
+        setFirstname("");
+        setPhone("");
+        setEmail("");
+        SetSelectedRole(undefined);
+        setFormData({
+            role_id: undefined
+        });
+    };
+
+    const handleCancel = () => {
+
+        try {
+            resetForm();
+            setAddUserModal(false)
+        } catch (error) {
+            console.error(error.message);
         }
     }
 
@@ -169,9 +192,9 @@ const Users = () => {
 
 
             {showEditUser && (
-                <Modal title={translator("edit_user")} width="750" onClose={() => setEditUserModal(false)}>
+                <Modal title={translator("edit_user")} width={modalWidth} height={modalHeight} onClose={() => setEditUserModal(false)} className='px-4'>
                     <form 
-                        className="w-full space-y-5"
+                        className="w-full space-y-5 py-2 px-4"
                         onSubmit={handleUserEditSubmit}
                     >
 
@@ -243,15 +266,30 @@ const Users = () => {
                                         })),
                                 })) ?? []
                             }
+                            className='app-border-color rounded'
+                            menuHeight='250'
                         />
 
-                        {/* Submit */}
-                        <button
-                            type="submit"
-                            className="flex h-[50px] w-full items-center justify-center gap-3 bg-[#1f2e54] text-sm font-medium text-white transition-all duration-300 hover:gap-4"
-                        >
-                            {translator("update")}
-                        </button>
+                        <div className='relative flex justify-end gap-3'>
+
+                             {/* Cancel */}
+                            <button
+                                type="submit"
+                                className="flex h-[40px] w-auto px-8 rounded items-center justify-center gap-3 text-sm font-medium bg-gray-100 text-gray-700 transition-all duration-300 hover:bg-gray-200"
+                                onClick={ () => setEditUserModal(false)}
+                            >
+                                {translator("cancel")}
+                            </button>
+
+                             {/* Submit */}
+                            <button
+                                type="submit"
+                                className="flex h-[40px] w-auto px-8 rounded items-center justify-center gap-3 bg-[#1f2e54] text-sm font-medium text-white transition-all duration-300 hover:gap-4"
+                            >
+                                {translator("add")}
+                            </button>
+
+                        </div>
 
                     </form>
                 </Modal>
@@ -259,9 +297,9 @@ const Users = () => {
 
 
             {showAddUser && (
-                <Modal title={translator("add_user")} width='750' onClose={() => setAddUserModal(false)}>
+                <Modal title={translator("add_user")} width={modalWidth} height={modalHeight} onClose={() => handleCancel()} className='px-4'>
                     <form
-                        className="w-full space-y-5"
+                        className="w-full space-y-5 py-2 px-4"
                         onSubmit={handleAddUserSubmit}
                     >
 
@@ -313,15 +351,30 @@ const Users = () => {
                                 })) ?? []
 
                             }
+                            className='app-border-color rounded'
+                            menuHeight='250'
                         />
 
-                        {/* Submit */}
-                        <button
-                            type="submit"
-                            className="flex h-[50px] w-full items-center justify-center gap-3 bg-[#1f2e54] text-sm font-medium text-white transition-all duration-300 hover:gap-4"
-                        >
-                            {translator("add")}
-                        </button>
+                        <div className='relative flex justify-end gap-3'>
+
+                             {/* Cancel */}
+                            <button
+                                type="submit"
+                                className="flex h-[40px] w-auto px-8 rounded items-center justify-center gap-3 text-sm font-medium bg-gray-100 text-gray-700 transition-all duration-300 hover:bg-gray-200"
+                                onClick={handleCancel}
+                            >
+                                {translator("cancel")}
+                            </button>
+
+                             {/* Submit */}
+                            <button
+                                type="submit"
+                                className="flex h-[40px] w-auto px-8 rounded items-center justify-center gap-3 bg-[#1f2e54] text-sm font-medium text-white transition-all duration-300 hover:gap-4"
+                            >
+                                {translator("add")}
+                            </button>
+
+                        </div>
 
                     </form>
                 </Modal>

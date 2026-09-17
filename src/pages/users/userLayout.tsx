@@ -4,6 +4,7 @@ import UsersIcon from '../../icons/UsersIcon';
 import { Outlet, useOutletContext } from 'react-router-dom';
 import RoleIcon from '../../icons/RoleIcon';
 import PermissionIcon from '../../icons/PermissionIcon';
+import { useI18n } from '../../context/AppContext';
 
 
 type OutletContext = {
@@ -12,12 +13,14 @@ type OutletContext = {
 
 const UsersLayout = () => {
 
+    const { translator } = useI18n();
+
     const { search } = useOutletContext<OutletContext>();
 
     const tabsProps = [
-        {to: "/users", name: "Users", children: <UsersIcon size="18"/>},
-        {to: "/users/role", name: "Role", children: <RoleIcon size="18" />},
-        {to: "/users/permissions", name: "Permissions", children: <PermissionIcon size="18" />}
+        {to: "/users", name: translator("users"), children: <UsersIcon size="18"/>},
+        {to: "/users/role", name: translator("role"), children: <RoleIcon size="18" />},
+        {to: "/users/permissions", name: translator("permission"), children: <PermissionIcon size="18" />}
     ];
   
 

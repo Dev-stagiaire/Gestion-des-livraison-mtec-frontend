@@ -1,4 +1,4 @@
-import { useEffect, useState, type SetStateAction } from "react";
+import { useEffect, useRef, useState, type SetStateAction } from "react";
 
 interface Item{
     id: number;
@@ -41,9 +41,24 @@ const InlineEdit = ({item, setRefreshKey, editFunction}: InlineEditPropsType) =>
         setEditing(false);
     };
 
+    const inputRef = useRef<HTMLInputElement>(null);
+
+    const handleClickOutside = (e: MouseEvent) => {
+
+        if (inputRef.current && !inputRef.current.contains(e.target as Node)) {
+            handleCancel();
+        }
+        document.addEventListener("mousedown", handleClickOutside);
+
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        }
+    }
+
     if (editing) {
         return (
             <input
+                ref={inputRef}
                 autoFocus
                 value={tempValue}
                 onChange={(e) => setTempValue(e.target.value)}
@@ -52,11 +67,11 @@ const InlineEdit = ({item, setRefreshKey, editFunction}: InlineEditPropsType) =>
                         handleSave();
                     }
 
-                    if (e.key === "Escape") {
+                    if (e.key === "Escape" ) {
                         handleCancel();
                     }
                 }}
-                className="border-color px-2 py-1 outline-none "
+               className="border border-gray-200 px-2 py-2 rounded outline-none"
             />
         );
     }

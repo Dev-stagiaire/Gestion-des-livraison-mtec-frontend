@@ -17,9 +17,9 @@ const Topbar = ({search, setSearch}: SearchProps)  => {
     const {translator, changeLanguage} = useI18n();
 
     return (
-        <div className='relative flex justify-between items-center py-2 px-4 h-18 w-full top-0 border-b-1 border-b-gray-200 shadow-xs bg-white'>
+        <div className='relative flex justify-between items-center py-2 px-7 h-18 w-full top-0 border-b-1 border-b-gray-200 shadow-xs bg-white'>
                 
-            <div className='flex gap-1 px-2 h-10 w-60 items-center border-1 border-solid border-gray-200'>
+            <div className='flex gap-1 px-2 h-10 w-60 items-center border-1 border-solid border-gray-200 rounded'>
                 <SearchIcon size="25" strokeWidth="1.5"/>
                 <input
                     type='search'
@@ -38,7 +38,8 @@ const Topbar = ({search, setSearch}: SearchProps)  => {
                 <div className="h-6 w-px bg-gray-300" />
                 <div className='flex items-center gap-2'>
                     <img src="" alt="" className='rounded-full h-8 w-8 border-1 border-gray-100'/>
-                    <Dropdown className='right-0 w-38' title={user ? user.first_name : "Profile"} options={ [ {title: "Your profile", link: ""}, {title : "Sign out", onClick: logout} ] }/>
+                    <Dropdown className='right-0 w-38' title={user ? user.first_name : "Profile"} options={ [ {title: "Your profile", link: ""}, {title : "Sign out", onClick: logout} ] }>
+                    </Dropdown>
                 </div>
             </div>
         </div>

@@ -17,11 +17,12 @@ interface DropdownPropsType{
     value?: string;
     options?: ItemsPopsType[];
     className?: string;
+    menuHeight?: string;
 }
 
 // const className = "inset-ring-1 inset-ring-gray-300 shadow-xs";
 
-export default function Dropdown({title, value, options, className}: DropdownPropsType) {
+export default function Dropdown({title, value, options, className, menuHeight}: DropdownPropsType) {
 
     const [selected, setSelected] = useState(null);
     const [icon, setIcon] = useState<ReactNode | undefined>(undefined);
@@ -33,10 +34,10 @@ export default function Dropdown({title, value, options, className}: DropdownPro
             name={title}
             value={selected ?? value}
         />
-      <MenuButton className="inline-flex justify-center gap-x-1.5 bg-white px-3 py-2 text-sm text-gray-900 hover:bg-gray-50 outline-none
+      <MenuButton className={`${className} app-input-text-size inline-flex justify-center gap-x-1.5 bg-white px-3 py-2 text-gray-900 hover:bg-gray-50 outline-none
         focus:outline-none
         focus:ring-0
-        focus:border-0"
+        focus:border-0`}
         >
         <div className='flex items-center gap-3'>
             {icon}
@@ -47,14 +48,14 @@ export default function Dropdown({title, value, options, className}: DropdownPro
 
       <MenuItems
         transition
-        className={`absolute z-10 mt-2 origin-top-left rounded-md bg-white shadow-lg outline-1 outline-black/5 transition data-closed:scale-95 data-closed:transform data-closed:opacity-0 data-enter:duration-100 data-enter:ease-out data-leave:duration-75 data-leave:ease-in ${className}`}
+        className={`absolute flex flex-wrap h-[${menuHeight}px] z-10 mt-2 px-1 origin-top-left rounded-md bg-white overflow-y-auto  shadow-lg outline-1 outline-black/5 transition data-closed:scale-95 data-closed:transform data-closed:opacity-0 data-enter:duration-100 data-enter:ease-out data-leave:duration-75 data-leave:ease-in`}
       >
         <div className="py-1">
             {options.map((option) => {
                 
                 if(!option.link){
                     return(
-                        <MenuItem>
+                        <MenuItem >
                             <button
                                 type="button"
                                 onClick={ () => {
@@ -62,10 +63,10 @@ export default function Dropdown({title, value, options, className}: DropdownPro
                                     setIcon(option.children);
                                     option.onClick?.();
                                 }}
-                                className="flex gap-3 items-center px-4 py-2 text-sm text-gray-700 data-focus:bg-gray-100 data-focus:text-gray-900 data-focus:outline-hidden"
+                                className="relative w-full flex gap-3 px-4 py-2 mb-1 last:mb-0 text-sm text-gray-700 data-focus:bg-gray-100 data-focus:text-gray-900 data-focus:outline-hidden"
                             >
-                            {option.children}
-                            {option.title}
+                                {option.children}
+                                {option.title}
                             </button>
                         </MenuItem>
                     );

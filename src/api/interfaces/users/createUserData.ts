@@ -1,7 +1,7 @@
 import type { Role } from "../../Auth/interfaces/user.interface";
 
 export interface CreateUserDate{
-    firstname: string;
+    first_name: string;
     email: string;
     phone: string;
     role?: Role;

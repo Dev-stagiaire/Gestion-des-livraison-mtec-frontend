@@ -3,7 +3,7 @@ import { Outlet } from "react-router-dom";
 import Sidebar from "./sidebar";
 import Topbar from "./topbar";
 
-import logo_mtec from "../assets/logo/logo_mtec.png";
+import logo_mtec from "../assets/logo/Logo_M-tec_telematics.png";
 
 import DashboardIcon from "../icons/DashboardIcon";
 import UsersIcon from "../icons/UsersIcon";
