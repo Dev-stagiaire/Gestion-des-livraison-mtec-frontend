@@ -45,7 +45,23 @@
     "status": "Status",
     "active": "Active",
     "inactive": "Inactive",
-    "app_description": "A delivery management solution designed to plan, organize, and track deliveries, routes, and field operations."
+    "app_description": "A delivery management solution designed to plan, organize, and track deliveries, routes, and field operations.",
+
+    "profile": "Profile",
+    "manage_account_information": "Manage your account information.",
+    "loading": "Loading...",
+    "personal_information": "Personal information",
+    "account_information": "Your personal account information.",
+    "first_name": "First name",
+    "last_name": "Last name",
+    "account_status": "Account status",
+    "save_changes": "Save changes",
+    "security": "Security",
+    "manage_account_password": "Manage your account password.",
+    "change_password": "Change password",
+    "account_activation": "Account activation",
+    "resend_activation_token_description": "Send a new activation link to this user's email address.",
+    "resend_activation_token": "Resend activation link"
 
 
 }

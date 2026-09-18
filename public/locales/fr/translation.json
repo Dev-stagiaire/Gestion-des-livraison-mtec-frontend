@@ -45,5 +45,21 @@
     "status": "Etat",
     "active": "Actif",
     "inactive": "Inactif",
-    "app_description": "Solution de gestion permettant d’organiser, planifier et suivre les livraisons, les tournées et les opérations terrain."
+    "app_description": "Solution de gestion permettant d’organiser, planifier et suivre les livraisons, les tournées et les opérations terrain.",
+
+    "profile": "Profil",
+    "manage_account_information": "Gérez les informations de votre compte.",
+    "loading": "Chargement...",
+    "personal_information": "Informations personnelles",
+    "account_information": "Les informations personnelles de votre compte.",
+    "first_name": "Prénom",
+    "last_name": "Nom",
+    "account_status": "Statut du compte",
+    "save_changes": "Enregistrer les modifications",
+    "security": "Sécurité",
+    "manage_account_password": "Gérez le mot de passe de votre compte.",
+    "change_password": "Modifier le mot de passe",
+    "account_activation": "Activation du compte",
+    "resend_activation_token_description": "Envoyer un nouveau lien d'activation à l'adresse e-mail de cet utilisateur.",
+    "resend_activation_token": "Renvoyer le lien d'activation"
 }

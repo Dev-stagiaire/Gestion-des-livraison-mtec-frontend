@@ -17,7 +17,7 @@ type OutletContext = {
     search: string;
 }
 
-const Role = () => {
+const Roles = () => {
 
     const modalWidth = "500";
     const modalHeight = "309";
@@ -328,4 +328,4 @@ const Role = () => {
   )
 }
 
-export default Role
+export default Roles;

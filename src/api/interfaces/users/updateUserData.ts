@@ -6,5 +6,5 @@ export interface UpdateUserData{
     email: string,
     is_active: boolean,
     avatar_url: string,
-    role_id: number,
+    role_id?: number,
 }

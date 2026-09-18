@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import "./login.css";
 import logo_mtec_telematics_noir from "/src/assets/logo/Logo_M-tec_Telematics_Noir.png";
 import Input from "../../components/ui/input";
+import Notification from "../../components/ui/Notification";
 import EmailIcon from "../../icons/EmailIcon";
 import { useAuth } from "../../hooks/useAuth";
-import { createUser } from "../../api/users.api";
 import { useI18n } from "../../context/AppContext";
 import { useNavigate } from "react-router";
 
@@ -15,7 +15,7 @@ const Login = () => {
 
     const { login } = useAuth();
     const [message, setMessage] = useState("");
-    const [messageType, setMessageType] = useState<"success" | "error" | "">("");
+    const [messageType, setMessageType] = useState<"success" | "error" | "warning">();
     const [messageVisibility, setMessageVisibility] = useState<"visible" | "hidden">("hidden");
 
 
@@ -34,12 +34,16 @@ const Login = () => {
             await login({ email, password });
             setMessage(translator("success_message_login"));
             setMessageType("success");
-            navigate("/users");
+            setMessageVisibility("visible");
+
+            setTimeout(() => {
+                navigate("/users");
+            }, 5000);
 
         } catch (error) {
             setMessage(translator("error_message_login"));
-            console.log(translator("error_message_login"));
             setMessageType("error");
+            setMessageVisibility("visible");
         }
     }
 
@@ -49,6 +53,13 @@ const Login = () => {
 
         <div className="container grid grid-cols-1 md:grid-cols-[0.9fr_0.6fr]">
 
+            {messageVisibility === "visible" && (
+                <Notification
+                    message={message}
+                    type={messageType}
+                    onClose={() => setMessageVisibility("hidden")}
+                />
+            )}
 
             <div className="logo-wrapper px-24 hidden lg:block">
                 <div className="img-box">

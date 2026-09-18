@@ -17,19 +17,25 @@ export const getUsers = async (paginationData: PaginationData): Promise<{data: U
     return response.data;
 }
 
-export const getUser = (id: number) => {
-    return api.get(`/user/${id}`);
+export const getUser = async (id: number) => {
+    const response = await api.get(`/user/find/${id}`);
+    return response.data;
 } 
 
 export const updateUser = (id: number, data: UpdateUserData) => {
     return api.patch(`/user/update/${id}`, data);
 }
 
-export const activateUserAccount = (id: number, token: string, data: ActivateUserAccountData) => {
-    return api.post(`user/activate/account/${id}`, 
+export const activateUserAccount = (token: string, data: ActivateUserAccountData) => {
+    return api.post(`user/activate/account`, 
         {
             data,
             params: token
         }
     );
+}
+
+export const resendUserToken = async (id: number) => {
+    const response = await api.get(`user/resend/token/${id}`);
+    return response.data;
 }

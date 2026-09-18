@@ -4,13 +4,14 @@ import { createUser, getUsers, updateUser } from '../../api/users.api';
 import { useEffect, useMemo, useState } from 'react';
 import type { Role, User } from '../../api/Auth/interfaces/user.interface';
 import { useFecthData } from '../../hooks/FetchData';
-import { useOutletContext } from 'react-router-dom';
+import { useNavigate, useOutletContext } from 'react-router-dom';
 import Modal from '../../components/ui/modal';
 import Input from '../../components/ui/input';
 import { useI18n } from '../../context/AppContext';
 import EditIcon from '../../icons/EditIcon';
 import Dropdown from '../../components/ui/dropdown';
 import { getRoles } from '../../api/role.api';
+import UsersIcon from '../../icons/UsersIcon';
 
 
 type OutletContext = {
@@ -21,6 +22,7 @@ const Users = () => {
 
     const modalWidth = "500";
     const modalHeight = "309";
+    const navigate = useNavigate();
 
     const {translator} = useI18n();
 
@@ -58,16 +60,25 @@ const Users = () => {
             >
                 {user.is_active ? translator("active") : translator("inactive")}
             </span>,
-            <button
-                type="button"
-                onClick={() => {
-                    setEditUserModal(true);
-                    setUserEdit(user);
-                }}
-                className="p-1 text-gray-700 hover:text-[#23356A]"
-            >
-                <EditIcon size="22" />
-            </button>
+            <div>
+                <button
+                    type="button"
+                    onClick={() => navigate(`/users/profile/${user.id}`)}
+                    className="p-1 text-gray-700 hover:text-[#23356A]"
+                >
+                    <UsersIcon size="22" />
+                </button>
+                <button
+                    type="button"
+                    onClick={() => {
+                        setEditUserModal(true);
+                        setUserEdit(user);
+                    }}
+                    className="p-1 text-gray-700 hover:text-[#23356A]"
+                >
+                    <EditIcon size="22" />
+                </button>
+            </div>
         ]);
     }, [users]);
 
@@ -159,7 +170,7 @@ const Users = () => {
             }
             console.dir(data);
             await createUser(data);
-            // await refresh();
+            await refresh();
             setAddUserModal(false);
         } catch (error) {
             console.error("Erreur lors de l'enregistrement :", error);
