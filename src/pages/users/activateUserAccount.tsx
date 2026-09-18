@@ -2,14 +2,18 @@ import React, { useState } from "react";
 import "../login/login.css";
 import logo_mtec_telematics_noir from "/src/assets/logo/Logo_M-tec_Telematics_Noir.png";
 import Input from "../../components/ui/input";
-import EmailIcon from "../../icons/EmailIcon";
 import { activateUserAccount } from "../../api/users.api";
 import { useI18n } from "../../context/AppContext";
 import { useNavigate } from "react-router";
+import Notification  from "../../components/ui/notification";
 
 const ActivateUserAccount = () => {
 
     const { translator } = useI18n();
+
+    const [message, setMessage] = useState("");
+    const [messageType, setMessageType] = useState<"success" | "error" | "warning">();
+    const [messageVisibility, setMessageVisibility] = useState<"visible" | "hidden">("hidden");
 
     const params = new URLSearchParams(window.location.search);
     const token = params.get("token");
@@ -29,11 +33,16 @@ const ActivateUserAccount = () => {
                 password1: password1,
                 password2: password2
             }
-            await activateUserAccount(token, data);
-            navigate("/users");
-
+            const response = await activateUserAccount(token, data);
+            // setMessage(translator("user-account-activate"));
+            console.dir(response);
+            setMessage(String(response.status));
+            setMessageType("success");
+            setMessageVisibility("visible");
         } catch (error) {
-            console.error(error.message);
+            setMessage(error.message);
+            setMessageType("error");
+            setMessageVisibility("visible");
         }
     }
 
@@ -43,6 +52,13 @@ const ActivateUserAccount = () => {
 
         <div className="container grid grid-cols-1 md:grid-cols-[0.9fr_0.6fr]">
 
+            {messageVisibility === "visible" && (
+                <Notification
+                    message={message}
+                    type={messageType}
+                    onClose={() => setMessageVisibility("hidden")}
+                />
+            )}
 
             <div className="logo-wrapper px-24 hidden lg:block">
                 <div className="img-box">
@@ -78,9 +94,7 @@ const ActivateUserAccount = () => {
                                     value={password1}
                                     onChange={(e) => setPassword1(e.target.value)}
                                     required
-                                >
-                                    <EmailIcon size="18" strokeWidth="1.5" className="icon" />
-                                </Input>
+                                />
                                 <Input
                                     id="password2"
                                     label={translator("password")}

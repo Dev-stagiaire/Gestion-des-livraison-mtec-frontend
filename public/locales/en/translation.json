@@ -24,7 +24,7 @@
     "back_to_login": "Back to ",
     "sign_in": "Sign In",
     "forgot_password": "Forgot password?",
-    "activate_account": "Activate account",
+    "activate_account": "Activate your account",
 
 
     "dashboard": "Dashboard",
@@ -61,7 +61,13 @@
     "change_password": "Change password",
     "account_activation": "Account activation",
     "resend_activation_token_description": "Send a new activation link to this user's email address.",
-    "resend_activation_token": "Resend activation link"
+    "resend_activation_token": "Resend activation link",
+    "resend-token": "Activation token sent successfully.",
+    "user-updated": "User updated successfully.",
+    "user-account-activate": "Your account has been activated. You can now log in.",
+    "forbidden": "Access denied.",
+    "your_profile": "Your profile",
+    "sign_out": "Sign out"
 
 
 }

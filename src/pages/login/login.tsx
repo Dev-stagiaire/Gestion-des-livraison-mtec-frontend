@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./login.css";
 import logo_mtec_telematics_noir from "/src/assets/logo/Logo_M-tec_Telematics_Noir.png";
 import Input from "../../components/ui/input";
-import Notification from "../../components/ui/Notification";
+import Notification from "../../components/ui/notification";
 import EmailIcon from "../../icons/EmailIcon";
 import { useAuth } from "../../hooks/useAuth";
 import { useI18n } from "../../context/AppContext";

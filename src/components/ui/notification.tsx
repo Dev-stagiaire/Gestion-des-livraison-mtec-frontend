@@ -10,7 +10,7 @@ interface NotificationProps {
  const Notification = ({ message, type = "error", onClose }: NotificationProps) => { 
 
     return createPortal(
-        <div className="fixed top-0 left-0 z-50 w-[350px] animate-[slideDown_0.35s_ease-out]"> 
+        <div className="fixed top-[20px] left-1/2 -translate-x-1/2 z-50 w-[350px] animate-[slideDown_0.35s_ease-out]"> 
             <div className="flex items-start gap-3 rounded border border-gray-200 bg-white/95 p-4 shadow-xl backdrop-blur-md"> 
                 <div className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-sm font-semibold ${ type === "error" ? "bg-red-100 text-red-600" : type === "success" ? "bg-green-100 text-green-600" : "bg-yellow-100 text-yellow-600" }`} > 
                     {

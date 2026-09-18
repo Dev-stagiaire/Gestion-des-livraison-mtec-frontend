@@ -24,7 +24,7 @@
     "back_to_login": "Retour à la ",
     "sign_in": "Se connecter",
     "forgot_password": "Mot de passe oublié ?",
-    "activate_account": "Activer le compte",
+    "activate_account": "Activer votre compte",
 
 
     "dashboard": "Tableau de bord",
@@ -61,5 +61,11 @@
     "change_password": "Modifier le mot de passe",
     "account_activation": "Activation du compte",
     "resend_activation_token_description": "Envoyer un nouveau lien d'activation à l'adresse e-mail de cet utilisateur.",
-    "resend_activation_token": "Renvoyer le lien d'activation"
+    "resend_activation_token": "Renvoyer le lien d'activation",
+    "resend-token": "Token d’activation envoyé avec succès.",
+    "user-updated": "Utilisateur mis à jour avec succès.",
+    "user-account-activate": "Votre compte a été activé. Vous pouvez maintenant vous connecter.",
+    "forbidden": "Accès refusé.",
+    "your_profile": "Votre profil",
+    "sign_out": "Se déconnecter"
 }

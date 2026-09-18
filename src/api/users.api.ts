@@ -27,10 +27,10 @@ export const updateUser = (id: number, data: UpdateUserData) => {
 }
 
 export const activateUserAccount = (token: string, data: ActivateUserAccountData) => {
-    return api.post(`user/activate/account`, 
+    return api.post(`user/activate/account`,
+        data,
         {
-            data,
-            params: token
+            params: { token }
         }
     );
 }

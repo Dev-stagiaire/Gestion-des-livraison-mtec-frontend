@@ -38,7 +38,7 @@ const Topbar = ({search, setSearch}: SearchProps)  => {
                 <div className="h-6 w-px bg-gray-300" />
                 <div className='flex items-center gap-2'>
                     <img src="" alt="" className='rounded-full h-8 w-8 border-1 border-gray-100'/>
-                    <Dropdown className='right-0 w-38' title={user ? user.first_name : "Profile"} options={ [ {title: "Your profile", link: ""}, {title : "Sign out", onClick: logout} ] }>
+                    <Dropdown className='right-0 w-38' title={user ? user.first_name : "Profile"} options={ [ {title: translator("your_profile"), link: `/users/profile/${user.id}`}, {title : translator("sign_out"), onClick: logout} ] }>
                     </Dropdown>
                 </div>
             </div>

@@ -47,6 +47,8 @@ const Users = () => {
 
     const { results: users, count, refresh } = useFecthData(getUsers, queryData);
 
+    console.dir(users);
+
     const rows = useMemo(() => {
         return users.map((user) => [
             user.first_name,

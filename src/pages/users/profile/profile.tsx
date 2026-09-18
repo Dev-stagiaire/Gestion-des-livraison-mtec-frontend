@@ -2,7 +2,8 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { getUser, resendUserToken, updateUser } from "../../../api/users.api";
 import { useI18n } from "../../../context/AppContext";
-import Notification from "../../../components/ui/Notification";
+import Notification from '../../../components/ui/notification';
+import type { UpdateUserData } from "../../../api/interfaces/users/updateUserData";
 
 interface UserProfile {
     id: number;
@@ -28,6 +29,7 @@ const Profile = () => {
     const [messageVisibility, setMessageVisibility] = useState<"visible" | "hidden">("hidden");
 
     const [user, setUser] = useState<UserProfile | null>(null);
+    const [refresh, setRefresh] = useState(0);
 
     useEffect(() => {
 
@@ -43,20 +45,37 @@ const Profile = () => {
 
         fetchProfile();
 
-    }, [id]);
+    }, [id, refresh]);
 
     const handleUpdateProfile = async () => {
         try {
-            await updateUser(user.id, user);
+            const updateUserData: UpdateUserData = {
+                first_name: user.first_name,
+                last_name: user.last_name,
+                avatar_url: user.avatar_url,
+                is_active: user.is_active,
+                phone: user.phone
+            };
+            const response = await updateUser(user.id, updateUserData);
+            // setMessage(translator("user-updated"));
+            setMessage(String(response.status));
+            setMessageType("success");
+            setRefresh( refresh + 1);
+            setMessageVisibility("visible");
         } catch (error) {
-            
+            if (error.message.status === 403) {
+                setMessage(translator("forbidden"));
+            }
+            setMessage(error.message);
+            setMessageType("error");
+            setMessageVisibility("visible");
         }
     }
 
     const resendToken = async () => {
         try {
             const response = await resendUserToken(user.id);
-            setMessage(response);
+            setMessage(translator("resend-token"));
             setMessageType("success");
             setMessageVisibility("visible");
         } catch (error) {
@@ -311,6 +330,7 @@ const Profile = () => {
                     <div className="mt-6 flex justify-end">
                         <button
                             type="button"
+                            onClick={() => handleUpdateProfile()}
                             className="rounded-md bg-gray-900 px-4 py-2 text-sm font-medium text-white hover:bg-gray-800"
                         >
                             {translator("save_changes")}
