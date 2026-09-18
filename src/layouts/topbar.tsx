@@ -3,7 +3,6 @@ import Dropdown from '../components/ui/dropdown';
 import SearchIcon from '../icons/SearchIcon';
 import { useAuth } from '../hooks/useAuth';
 import { FR, GB } from "country-flag-icons/react/3x2";
-import { useEffect, useState } from 'react';
 
 interface SearchProps {
     search: string;

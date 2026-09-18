@@ -39,6 +39,11 @@ const ActivateUserAccount = () => {
             setMessage(String(response.status));
             setMessageType("success");
             setMessageVisibility("visible");
+
+            setTimeout(() => {
+                navigate("/login");
+            }, 10000);
+
         } catch (error) {
             setMessage(error.message);
             setMessageType("error");

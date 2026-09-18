@@ -124,10 +124,10 @@ const Users = () => {
 
     const { results: roles } = useFecthData(getRoles, pagination);
 
-    const roleOptions = roles.map((role) => ({
-            label: role.name,
-            value: role.id
-    }));
+    // const roleOptions = roles.map((role) => ({
+    //         label: role.name,
+    //         value: role.id
+    // }));
 
     const handleUserEditSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();

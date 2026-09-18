@@ -75,7 +75,9 @@ const Profile = () => {
     const resendToken = async () => {
         try {
             const response = await resendUserToken(user.id);
-            setMessage(translator("resend-token"));
+            if (response.status === 200) {
+                setMessage(translator("resend-token"));
+            }
             setMessageType("success");
             setMessageVisibility("visible");
         } catch (error) {
